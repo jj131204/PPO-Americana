@@ -1,4 +1,4 @@
-class cuentaBancaria():
+class CuentaBancaria():
     def __init__(self, saldo, titular):
         
         self.__saldo = saldo
@@ -18,35 +18,20 @@ class cuentaBancaria():
             raise ValueError("Debe ser un valor positivo")
     
     def set_retirar(self, cantidad):
-        saldoAnterio = self.__saldo
-        if 0 < cantidad <= self.__saldo:
+        result = self.__ajustar_saldo(cantidad)
+
+        if result:
             self.__saldo -= cantidad
-            print(f"Retiro realizado con exito")
-            print(f"Saldo anterior = {saldoAnterio} -  Nuevo saldo {self.__saldo}")
             return self.__saldo
+
+    def  __ajustar_saldo(self, cantidad):
+        if 0 < cantidad <= self.__saldo:
+            return True 
         raise ValueError("Debe ser un valor negativo y no puede superar el valor acutal de tu cuenta")
 
+cuenta1 = CuentaBancaria(200000, "Juan")
+cuenta2 = CuentaBancaria(300000, "Maria")
 
-cuenta1 = cuentaBancaria(200000, "Juan")
-cuenta2 = cuentaBancaria(300000, "Maria")
+cuenta1.set_retirar(100)
 
-print(cuenta1.get_titular())
 print(cuenta1.get_saldo())
-print(cuenta2.get_titular())
-print(cuenta2.get_saldo())
-
-cuenta1.set_depositar(100000)
-cuenta2.set_depositar(100000)
-
-print(cuenta1.get_titular())
-print(cuenta1.get_saldo())
-print(cuenta2.get_titular())
-print(cuenta2.get_saldo())
-
-cuenta1.set_retirar(100000)
-cuenta2.set_retirar(100000)
-
-print(cuenta1.get_titular())
-print(cuenta1.get_saldo())
-print(cuenta2.get_titular())
-print(cuenta2.get_saldo())
