@@ -17,7 +17,6 @@ class Empleado:
         return cls.contador_empleados
 
 
-# Ejemplo de uso
 empleado1 = Empleado("Ana Pérez", 3000)
 empleado2 = Empleado("Carlos Gómez", 3500)
 
